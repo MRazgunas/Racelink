@@ -112,6 +112,39 @@
             <entry value="4" name="VTS_RESULT_FAILED">
                 <description>Command executed, but failed</description>
             </entry>
+        </enum>
+        <enum name="VTS_PARAM_TYPE">
+            <description>Parameter type</description>
+            <entry value="1" name="MAV_PARAM_TYPE_UINT8">
+                <description>8-bit unsigned integer</description>
+            </entry>
+            <entry value="2" name="MAV_PARAM_TYPE_INT8">
+                <description>8-bit signed integer</description>
+            </entry>
+            <entry value="3" name="MAV_PARAM_TYPE_UINT16">
+                <description>16-bit unsigned integer</description>
+            </entry>
+            <entry value="4" name="MAV_PARAM_TYPE_INT16">
+                <description>16-bit signed integer</description>
+            </entry>
+            <entry value="5" name="MAV_PARAM_TYPE_UINT32">
+                <description>32-bit unsigned integer</description>
+            </entry>
+            <entry value="6" name="MAV_PARAM_TYPE_INT32">
+                <description>32-bit signed integer</description>
+            </entry>
+            <entry value="7" name="MAV_PARAM_TYPE_UINT64">
+                <description>64-bit unsigned integer</description>
+            </entry>
+            <entry value="8" name="MAV_PARAM_TYPE_INT64">
+                <description>64-bit signed integer</description>
+            </entry>
+            <entry value="9" name="MAV_PARAM_TYPE_REAL32">
+                <description>32-bit floating-point</description>
+            </entry>
+            <entry value="10" name="MAV_PARAM_TYPE_REAL64">
+                <description>64-bit floating-point</description>
+            </entry>
         </enum>        
     </enums>
     <messages>
@@ -148,7 +181,7 @@
             <description>Emit the value of a onboard parameter. The inclusion of param_count and param_index in the message allows the recipient to keep track of received parameters and allows him to re-request missing parameters after a loss or timeout.</description>
             <field type="char[16]" name="param_id">Onboard parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</field>
             <field type="float" name="param_value">Onboard parameter value</field>
-            <field type="uint8_t" name="param_type" enum="MAV_PARAM_TYPE">Onboard parameter type: see the MAV_PARAM_TYPE enum for supported data types.</field>
+            <field type="uint8_t" name="param_type" enum="VTS_PARAM_TYPE">Onboard parameter type: see the MAV_PARAM_TYPE enum for supported data types.</field>
             <field type="uint16_t" name="param_count">Total number of onboard parameters</field>
             <field type="uint16_t" name="param_index">Index of this onboard parameter</field>
         </message>
@@ -158,7 +191,7 @@
             <field type="uint8_t" name="target_component">Component ID</field>
             <field type="char[16]" name="param_id">Onboard parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</field>
             <field type="float" name="param_value">Onboard parameter value</field>
-            <field type="uint8_t" name="param_type" enum="MAV_PARAM_TYPE">Onboard parameter type: see the MAV_PARAM_TYPE enum for supported data types.</field>
+            <field type="uint8_t" name="param_type" enum="VTS_PARAM_TYPE">Onboard parameter type: see the MAV_PARAM_TYPE enum for supported data types.</field>
         </message>        
         <message id="24" name="RACER_PASS">
             <field type="uint32_t" name="time_ms" units="ms">Timestamp (miliseconds since UNIX epoch or miliseconds since boot time)</field>
